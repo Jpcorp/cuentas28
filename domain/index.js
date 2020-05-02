@@ -1,3 +1,4 @@
 module.exports = {
-    typeEntityServicies = require("./typeEntityServices.domain")        
+
+    //typeEntityServicies = require("./typeEntityServices.domain")        
 }

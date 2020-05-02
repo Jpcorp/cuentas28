@@ -3,9 +3,10 @@ const { asClass, createContainer, asFunction, asValue } = require("awilix");
 const StarUp = require("./startup");
 const Server = require("./server");
 
-const typeEntityServicesController = require("../presentation/controllers/typeEntityServices.controller");
+const { typeEntityServicesController } = require("../presentation/controllers");
 const Routes = require("../presentation/routers");
-const TypeEntityServiciesRoutes = require("./routers/typesEntityServicies.routes");
+const typeEntityServiciesRoutes = require("./routers/typesEntityServicies.routes");
+const { typeEntityServices }= require("../services")
 
 const config = require("../config/enviroments")
 
@@ -25,7 +26,10 @@ container.register({
     config: asValue(config) 
 })
 .register({
-    typeEntityServiciesRoutes: asFunction(TypeEntityServiciesRoutes).singleton()
+    typeEntityServiciesRoutes: asFunction(typeEntityServiciesRoutes).singleton()
+})
+.register({
+    TypeEntityServices: asClass(typeEntityServices).singleton()
 })
 
 module.exports = container;
