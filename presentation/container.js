@@ -16,7 +16,7 @@ container.register({
     server : asClass(Server).singleton()
 })
 .register({ 
-    typeEntityServicesController: asClass(TypeEntityServicesController).singleton() 
+    typeEntityServicesController: asClass(typeEntityServicesController).singleton() 
 })
 .register({
     router: asFunction(Routes).singleton()
