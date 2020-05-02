@@ -3,7 +3,7 @@ const { asClass, createContainer, asFunction, asValue } = require("awilix");
 const StarUp = require("./startup");
 const Server = require("./server");
 
-const TypeEntityServicesController = require("../presentation/controllers/typeEntityServices.controller");
+const typeEntityServicesController = require("../presentation/controllers/typeEntityServices.controller");
 const Routes = require("../presentation/routers");
 const TypeEntityServiciesRoutes = require("./routers/typesEntityServicies.routes");
 

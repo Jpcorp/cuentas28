@@ -1,3 +1,3 @@
 module.exports = {
-    TypeEntityServicesController: require("./typeEntityServices.controller.js")
+    typeEntityServicesController: require("./typeEntityServices.controller")
 };
