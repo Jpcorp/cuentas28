@@ -3,12 +3,15 @@ const { asClass, createContainer, asFunction, asValue } = require("awilix");
 const StarUp = require("./startup");
 const Server = require("./server");
 
-const { typeEntityServicesController } = require("../presentation/controllers");
+const { TypeEntityServicesController } = require("../presentation/controllers");
 const Routes = require("../presentation/routers");
 const typeEntityServiciesRoutes = require("./routers/typesEntityServicies.routes");
-const { typeEntityServices }= require("../services")
+const { TypeEntityServices } = require("../services");
+const { TypeEntityServicesRepository } = require("../database/repositories")
 
-const config = require("../config/enviroments")
+const config = require("../config/enviroments");
+
+const db = require("../database/entities");
 
 const container = createContainer();
 
@@ -17,19 +20,23 @@ container.register({
     server : asClass(Server).singleton()
 })
 .register({ 
-    typeEntityServicesController: asClass(typeEntityServicesController).singleton() 
+    typeEntityServicesController: asClass(TypeEntityServicesController).singleton() 
 })
 .register({
     router: asFunction(Routes).singleton()
 })
 .register({ 
-    config: asValue(config) 
+    config: asValue(config),
+    db: asValue(db).singleton()
 })
 .register({
     typeEntityServiciesRoutes: asFunction(typeEntityServiciesRoutes).singleton()
 })
 .register({
-    TypeEntityServices: asClass(typeEntityServices).singleton()
+    typeEntityServices: asClass(TypeEntityServices).singleton()
+})
+.register({
+    typeEntityServicesRepository: asClass(TypeEntityServicesRepository).singleton()
 })
 
 module.exports = container;

@@ -1,4 +1,5 @@
-const { domainToEntity }= require("../domain/mappers");
+const { dbToDomian } = require("../domain/mappers");
+const { domianToDb } = require("../database/mappers");
 class TypeEntityServices {
     constructor({ typeEntityServicesRepository }) {
         this._typeEntityServicesRepository = typeEntityServicesRepository;
@@ -10,7 +11,7 @@ class TypeEntityServices {
     }
 
     async setTypeEntityServices(typeEntityServices) {
-        typeEntityServices = domainToEntity(typeEntityServices);
+        typeEntityServices = domianToDb(typeEntityServices);
         const createdTypeEntityServices =  await this._typeEntityServicesRepository(typeEntityServices);
         return createdTypeEntityServices;
     }
